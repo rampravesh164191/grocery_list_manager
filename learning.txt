@@ -1,0 +1,3 @@
+don't past script tag in header section without defer 
+or else your functions might not work - my onclick function 
+was not working. - causing undefined error.
