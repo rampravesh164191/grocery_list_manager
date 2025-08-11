@@ -1,6 +1,4 @@
-import { data } from "./bag.js";
-//calculating total khana peena in the house
-
+import { data } from "./store.js";
 
 const dishes = [
   {

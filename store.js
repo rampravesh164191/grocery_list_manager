@@ -1,11 +1,10 @@
-
-    export const data = [
+export const data = [
     {
         "id": "s1",
         "name": "Daawat Biryani Basmati Rice, 5 Kg",
         "type": "grains",
         "weight" : "5",
-        "price": "1,079",
+        "price": "1079",
         "image": "https://m.media-amazon.com/images/I/61luvSZNl6L._AC_UL480_FMwebp_QL65_.jpg",
         "expiry_date": "2026-03-15",
         "nutritional_info_per_100g": {
@@ -40,30 +39,65 @@
         },
         "availability": "In Stock"
     },
-    {
+     {
         "id": "s3",
         "name": "Classic Harvest Parmal Rice, 1KG",
-        "weight" : "1",
         "type": "grains",
-        "price" : "188",
-        "weight": "1KG",
-        "image": "https://m.media-amazon.com/images/I/61Ac9HyH9ZL._AC_UL480_FMwebp_QL65_.jpg"
+        "weight": "1",
+        "price": "188",
+        "image": "https://m.media-amazon.com/images/I/61Ac9HyH9ZL._AC_UL480_FMwebp_QL65_.jpg",
+        "expiry_date": "2025-11-10",
+        "nutritional_info_per_100g": {
+            "energy": "342 kcal",
+            "protein": "6.9 g",
+            "carbohydrates": "78 g",
+            "sugar": "0 g",
+            "fat": "0.4 g",
+            "saturated_fat": "0.1 g",
+            "fiber": "1.0 g",
+            "sodium": "1 mg"
+        },
+        "availability": "In Stock"
     },
     {
         "id": "s4",
         "name": "India Gate Basmati Rice Everyday 5KG",
-        "weight" : "5",
         "type": "grains",
+        "weight": "5",
         "price": "340",
-        "image": "https://m.media-amazon.com/images/I/71v0fCOgbjL._AC_UL480_FMwebp_QL65_.jpg"
+        "image": "https://m.media-amazon.com/images/I/71v0fCOgbjL._AC_UL480_FMwebp_QL65_.jpg",
+        "expiry_date": "2026-02-18",
+        "nutritional_info_per_100g": {
+            "energy": "348 kcal",
+            "protein": "8.2 g",
+            "carbohydrates": "76 g",
+            "sugar": "0 g",
+            "fat": "0.7 g",
+            "saturated_fat": "0.3 g",
+            "fiber": "1.3 g",
+            "sodium": "2 mg"
+        },
+        "availability": "In Stock"
     },
     {
         "id": "s5",
         "name": "Aashirvaad Shudh Chakki Atta, 10KG",
-        "weight" : "10",
         "type": "grains",
+        "weight": "10",
         "price": "448",
-        "image": "https://m.media-amazon.com/images/I/91Lj2AJXfOL._AC_UL480_FMwebp_QL65_.jpg"
+        "image": "https://m.media-amazon.com/images/I/91Lj2AJXfOL._AC_UL480_FMwebp_QL65_.jpg",
+        "expiry_date": "2025-09-30",
+        "nutritional_info_per_100g": {
+            "energy": "364 kcal",
+            "protein": "11.8 g",
+            "carbohydrates": "72 g",
+            "sugar": "0 g",
+            "fat": "1.7 g",
+            "saturated_fat": "0.4 g",
+            "fiber": "12.5 g",
+            "sodium": "5 mg"
+        },
+        "availability": "In Stock"
     },
     {
         "id": "s5",
@@ -1563,11 +1597,6 @@
         "image": "https://m.media-amazon.com/images/I/714r91-V7XL._AC_UL480_FMwebp_QL65_.jpg"
     }
 ]
-
-
-
-
-
 
 let container = document.getElementById("data");
 let detail = document.getElementById("detail");
