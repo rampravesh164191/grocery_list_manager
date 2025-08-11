@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Khana</title>
+    <link rel="shortcut icon" href="./images/KHANA_LOGO.svg" type="image/x-icon">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <style>
+        *{
+            padding: 0px;
+            margin: 0px;
+            box-sizing: border-box;
+        }
+        nav{
+            border: 1px solid black;
+            max-width: 1600px;
+            height: 60px;
+            display: flex;
+            justify-content: space-between;
+        }
+        nav > div{
+            border: 1px solid black;
+            height: 100%;
+        }
+        nav > div:nth-child(1)>a{
+            width: 200px;
+            display: flex;
+            align-items: center;
+            height: 100%;
+        }
+        nav > div:nth-child(1) >a> img{
+            height: 80%;
+            margin-left: 10px;
+        }
+        nav > div:nth-child(2){
+            width: 800px;
+            display: flex;
+            justify-content: space-evenly;
+            align-items: center;
+        }
+        nav > div:nth-child(2)>a>span{
+            font-size: 30px;
+            text-decoration: none;
+            color: black;
+        }
+        nav > div:nth-child(3){
+            width: 300px;
+            display: flex;
+            justify-content: space-between;
+            padding-left: 0.5%;
+            padding-right: 0.5%;
+            align-items: center;
+        }
+        nav > div:nth-child(3) > a{
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            text-decoration: none;
+            color: black;
+        }
+        nav > div:nth-child(3)>a>span{
+            font-size: 30px;
+            cursor: pointer;
+        }
+        nav > div:nth-child(3) > a>p{
+            margin-right: 3px;
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div>
+            <a href="index.html">
+                <img src="./images/KHANA_LOGO.svg" alt="">
+            </a>
+        </div>
+        <div>
+            <a href="bag.html"><span class="material-symbols-outlined">
+                inventory_2
+            </span></a>
+            <a href="food.html"><span class="material-symbols-outlined">
+                ramen_dining
+            </span></a>
+            <a href="store.html"><span class="material-symbols-outlined">
+                storefront
+            </span></a>
+        </div>
+        <div>
+            <a href=""><span class="material-symbols-outlined">
+            shopping_cart
+            </span></a>
+            <a href="">
+                <p>User</p>
+                <span class="material-symbols-outlined">
+                account_circle
+                </span>
+            </a>
+        </div>
+    </nav>
+    <div id="cart"></div>
+</body>
+</html>
+<script type="module" src="cart.js"></script>

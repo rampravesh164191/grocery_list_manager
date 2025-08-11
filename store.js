@@ -1571,11 +1571,36 @@
 
 let container = document.getElementById("data");
 let detail = document.getElementById("detail");
+window.onload = function(){
+   showAll(data);
+   showDetail(`${data[0].id}`)
+}
+//show all products
+function showAll(product = data){
+    container.innerHTML = "";
+    for(let i = 0; i < product.length; i++){
+    let card = `
+            <div onclick="showDetail('${product[i].id}')" class="card">
+                <div>
+                    <img src="${product[i].image}" alt="">
+                </div>
+                <div>
+                    <p>${product[i].name}</p>
+                    <p>Price : ₹${product[i].price}</p>
+                    <button onclick="addToCart('${product[i].id}')">Add to cart</button>
+                </div>
+            </div>
+    `;
+    container.innerHTML += card;
+   }
+   showDetail(`${product[0].id}`);
+}
+window.showAll = showAll;
 function showDetail(i){
+    detail.innerHTML = "";
     let obj = data.find(s=>s.id == i);
     let nutrition = obj.nutritional_info_per_100g;
     console.log(obj);
-    detail.innerHTML = "";
     let card2 = `
             <div id="card2">
                 <div>
@@ -1583,7 +1608,7 @@ function showDetail(i){
                 </div>
                 <div>
                     <h3>${obj.name}</h3>
-                    <h3>${obj.price}</h3>
+                    <h3>Price : ₹${obj.price}</h3>
                     <button></button>
                 </div>
                 <div class="nutrition">
@@ -1626,663 +1651,86 @@ function showDetail(i){
    `;
    detail.innerHTML += card2;
 }
-window.onload = function(){
-    for(let i = 0; i < data.length; i++){
-    let card = `
-            <div onclick="showDetail('${data[i].id}')" class="card">
-                <div>
-                    <img src="${data[i].image}" alt="">
-                </div>
-                <div>
-                    <h3>${data[i].name}</h3>
-                    <h3>${data[i].price}</h3>
-                    <button>Buy</button>
-                </div>
-            </div>
-    `;
-    container.innerHTML += card;
-   }
-   detail.innerHTML = "";
-   let nutrition = data[0].nutritional_info_per_100g;
-   let card2 = `
-            <div id="card2">
-                <div>
-                    <img src="${data[0].image}" alt="">
-                </div>
-                <div>
-                    <h3>${data[0].name}</h3>
-                    <h3>${data[0].price}</h3>
-                    <button></button>
-                </div>
-                <div class="nutrition">
-                    <h4>Nutritional info per 100g</h4>
-                    <div>
-                        <p>Energy</p>
-                        <p>${nutrition.energy}</p>
-                    </div>
-                    <div>
-                        <p>Protein</p>
-                        <p>${nutrition.protein}</p>
-                    </div>
-                    <div>
-                        <p>Carbohydrates</p>
-                        <p>${nutrition.carbohydrates}</p>
-                    </div>
-                    <div>
-                        <p>Sugar</p>
-                        <p>${nutrition.sugar}</p>
-                    </div>
-                    <div>
-                        <p>Fat</p>
-                        <p>${nutrition.fat}</p>
-                    </div>
-                    <div>
-                        <p>Saturated fat</p>
-                        <p>${nutrition.saturated_fat}</p>
-                    </div>
-                    <div>
-                        <p>Fiber</p>
-                        <p>${nutrition.fiber}</p>
-                    </div>
-                    <div>
-                        <p>Sodium</p>
-                        <p>${nutrition.sodium}</p>
-                    </div>
-                    <button>In Stock</button>
-                </div>
-            </div>
-   `;
-   detail.innerHTML += card2;
-}
+window.showDetail = showDetail;
 
 //show only grains --------------------------------------
 function showGrains(){
-    container.innerHTML = "";
     let grains = data.filter((obj)=>{
         return obj.type == "grains";
     })
-    for(let i = 0; i < grains.length; i++){
-    let card = `
-            <div onclick="showDetail('${grains[i].id}')" class="card">
-                <div>
-                    <img src="${grains[i].image}" alt="">
-                </div>
-                <div>
-                    <h3>${grains[i].name}</h3>
-                    <h3>${grains[i].price}</h3>
-                    <button>Buy</button>
-                </div>
-            </div>
-    `;
-    container.innerHTML += card;
-   }
-   detail.innerHTML = "";
-   let nutrition = grains[0].nutritional_info_per_100g;
-   let card2 = `
-            <div id="card2">
-                <div>
-                    <img src="${grains[0].image}" alt="">
-                </div>
-                <div>
-                    <h3>${grains[0].name}</h3>
-                    <h3>${grains[0].price}</h3>
-                    <button></button>
-                </div>
-                 <div class="nutrition">
-                    <h4>Nutritional info per 100g</h4>
-                    <div>
-                        <p>Energy</p>
-                        <p>${nutrition.energy}</p>
-                    </div>
-                    <div>
-                        <p>Protein</p>
-                        <p>${nutrition.protein}</p>
-                    </div>
-                    <div>
-                        <p>Carbohydrates</p>
-                        <p>${nutrition.carbohydrates}</p>
-                    </div>
-                    <div>
-                        <p>Sugar</p>
-                        <p>${nutrition.sugar}</p>
-                    </div>
-                    <div>
-                        <p>Fat</p>
-                        <p>${nutrition.fat}</p>
-                    </div>
-                    <div>
-                        <p>Saturated fat</p>
-                        <p>${nutrition.saturated_fat}</p>
-                    </div>
-                    <div>
-                        <p>Fiber</p>
-                        <p>${nutrition.fiber}</p>
-                    </div>
-                    <div>
-                        <p>Sodium</p>
-                        <p>${nutrition.sodium}</p>
-                    </div>
-                    <button>In Stock</button>
-                </div>
-            </div>
-   `;
-   detail.innerHTML += card2;
+    showAll(grains);
 }
+window.showGrains = showGrains;
 
 //show only pulses -----------------------------------------
 function showPulses(){
-    container.innerHTML = "";
     let pulses = data.filter((obj)=>{
         return obj.type == "pulses";
     })
-    for(let i = 0; i < pulses.length; i++){
-    let card = `
-            <div onclick="showDetail('${pulses[i].id}')" class="card">
-                <div>
-                    <img src="${pulses[i].image}" alt="">
-                </div>
-                <div>
-                    <h3>${pulses[i].name}</h3>
-                    <h3>${pulses[i].price}</h3>
-                    <button>Buy</button>
-                </div>
-            </div>
-    `;
-    container.innerHTML += card;
-   }
-   detail.innerHTML = "";
-   let nutrition = pulses[0].nutritional_info_per_100g;
-   let card2 = `
-            <div id="card2">
-                <div>
-                    <img src="${pulses[0].image}" alt="">
-                </div>
-                <div>
-                    <h3>${pulses[0].name}</h3>
-                    <h3>${pulses[0].price}</h3>
-                    <button></button>
-                </div>
-                 <div class="nutrition">
-                    <h4>Nutritional info per 100g</h4>
-                    <div>
-                        <p>Energy</p>
-                        <p>${nutrition.energy}</p>
-                    </div>
-                    <div>
-                        <p>Protein</p>
-                        <p>${nutrition.protein}</p>
-                    </div>
-                    <div>
-                        <p>Carbohydrates</p>
-                        <p>${nutrition.carbohydrates}</p>
-                    </div>
-                    <div>
-                        <p>Sugar</p>
-                        <p>${nutrition.sugar}</p>
-                    </div>
-                    <div>
-                        <p>Fat</p>
-                        <p>${nutrition.fat}</p>
-                    </div>
-                    <div>
-                        <p>Saturated fat</p>
-                        <p>${nutrition.saturated_fat}</p>
-                    </div>
-                    <div>
-                        <p>Fiber</p>
-                        <p>${nutrition.fiber}</p>
-                    </div>
-                    <div>
-                        <p>Sodium</p>
-                        <p>${nutrition.sodium}</p>
-                    </div>
-                    <button>In Stock</button>
-                </div>
-            </div>
-   `;
-   detail.innerHTML += card2;
+   showAll(pulses);
 }
+window.showPulses = showPulses
 
 //show only spices ---------------------------------------------
 function showSpices(){
-    container.innerHTML = "";
     let spices = data.filter((obj)=>{
         return obj.type == "spices";
     })
-    for(let i = 0; i < spices.length; i++){
-    let card = `
-            <div onclick="showDetail('${spices[i].id}')" class="card">
-                <div>
-                    <img src="${spices[i].image}" alt="">
-                </div>
-                <div>
-                    <h3>${spices[i].name}</h3>
-                    <h3>${spices[i].price}</h3>
-                    <button>Buy</button>
-                </div>
-            </div>
-    `;
-    container.innerHTML += card;
-   }
-   detail.innerHTML = "";
-   let nutrition = spices[0].nutritional_info_per_100g;
-   let card2 = `
-            <div id="card2">
-                <div>
-                    <img src="${spices[0].image}" alt="">
-                </div>
-                <div>
-                    <h3>${spices[0].name}</h3>
-                    <h3>${spices[0].price}</h3>
-                    <button></button>
-                </div>
-                 <div class="nutrition">
-                    <h4>Nutritional info per 100g</h4>
-                    <div>
-                        <p>Energy</p>
-                        <p>${nutrition.energy}</p>
-                    </div>
-                    <div>
-                        <p>Protein</p>
-                        <p>${nutrition.protein}</p>
-                    </div>
-                    <div>
-                        <p>Carbohydrates</p>
-                        <p>${nutrition.carbohydrates}</p>
-                    </div>
-                    <div>
-                        <p>Sugar</p>
-                        <p>${nutrition.sugar}</p>
-                    </div>
-                    <div>
-                        <p>Fat</p>
-                        <p>${nutrition.fat}</p>
-                    </div>
-                    <div>
-                        <p>Saturated fat</p>
-                        <p>${nutrition.saturated_fat}</p>
-                    </div>
-                    <div>
-                        <p>Fiber</p>
-                        <p>${nutrition.fiber}</p>
-                    </div>
-                    <div>
-                        <p>Sodium</p>
-                        <p>${nutrition.sodium}</p>
-                    </div>
-                    <button>In Stock</button>
-                </div>
-            </div>
-   `;
-   detail.innerHTML += card2;
+    showAll(spices);
 }
-
+window.showSpices = showSpices;
 //show only dairy ---------------------------------------------
 function showDairy(){
-    container.innerHTML = "";
     let dairy = data.filter((obj)=>{
         return obj.type == "dairy";
     })
-    for(let i = 0; i < dairy.length; i++){
-    let card = `
-            <div onclick="showDetail('${dairy[i].id}')" class="card">
-                <div>
-                    <img src="${dairy[i].image}" alt="">
-                </div>
-                <div>
-                    <h3>${dairy[i].name}</h3>
-                    <h3>${dairy[i].price}</h3>
-                    <button>Buy</button>
-                </div>
-            </div>
-    `;
-    container.innerHTML += card;
-   }
-   detail.innerHTML = "";
-   let nutrition = dairy[0].nutritional_info_per_100g;
-   let card2 = `
-            <div id="card2">
-                <div>
-                    <img src="${dairy[0].image}" alt="">
-                </div>
-                <div>
-                    <h3>${dairy[0].name}</h3>
-                    <h3>${dairy[0].price}</h3>
-                    <button></button>
-                </div>
-                 <div class="nutrition">
-                    <h4>Nutritional info per 100g</h4>
-                    <div>
-                        <p>Energy</p>
-                        <p>${nutrition.energy}</p>
-                    </div>
-                    <div>
-                        <p>Protein</p>
-                        <p>${nutrition.protein}</p>
-                    </div>
-                    <div>
-                        <p>Carbohydrates</p>
-                        <p>${nutrition.carbohydrates}</p>
-                    </div>
-                    <div>
-                        <p>Sugar</p>
-                        <p>${nutrition.sugar}</p>
-                    </div>
-                    <div>
-                        <p>Fat</p>
-                        <p>${nutrition.fat}</p>
-                    </div>
-                    <div>
-                        <p>Saturated fat</p>
-                        <p>${nutrition.saturated_fat}</p>
-                    </div>
-                    <div>
-                        <p>Fiber</p>
-                        <p>${nutrition.fiber}</p>
-                    </div>
-                    <div>
-                        <p>Sodium</p>
-                        <p>${nutrition.sodium}</p>
-                    </div>
-                    <button>In Stock</button>
-                </div>
-            </div>
-   `;
-   detail.innerHTML += card2;
+   showAll(dairy);
 }
-
+window.showDairy = showDairy
 //show only vegetables ----------------------------------
 
 function showVegetables(){
-    container.innerHTML = "";
     let vegetables = data.filter((obj)=>{
         return obj.type == "vegetable";
     })
-    for(let i = 0; i < vegetables.length; i++){
-    let card = `
-            <div onclick="showDetail('${vegetables[i].id}')" class="card">
-                <div>
-                    <img src="${vegetables[i].image}" alt="">
-                </div>
-                <div>
-                    <h3>${vegetables[i].name}</h3>
-                    <h3>${vegetables[i].price}</h3>
-                    <button>Buy</button>
-                </div>
-            </div>
-    `;
-    container.innerHTML += card;
-   }
-   detail.innerHTML = "";
-   let nutrition = vegetables[0].nutritional_info_per_100g;
-   let card2 = `
-            <div id="card2">
-                <div>
-                    <img src="${vegetables[0].image}" alt="">
-                </div>
-                <div>
-                    <h3>${vegetables[0].name}</h3>
-                    <h3>${vegetables[0].price}</h3>
-                    <button></button>
-                </div>
-                 <div class="nutrition">
-                    <h4>Nutritional info per 100g</h4>
-                    <div>
-                        <p>Energy</p>
-                        <p>${nutrition.energy}</p>
-                    </div>
-                    <div>
-                        <p>Protein</p>
-                        <p>${nutrition.protein}</p>
-                    </div>
-                    <div>
-                        <p>Carbohydrates</p>
-                        <p>${nutrition.carbohydrates}</p>
-                    </div>
-                    <div>
-                        <p>Sugar</p>
-                        <p>${nutrition.sugar}</p>
-                    </div>
-                    <div>
-                        <p>Fat</p>
-                        <p>${nutrition.fat}</p>
-                    </div>
-                    <div>
-                        <p>Saturated fat</p>
-                        <p>${nutrition.saturated_fat}</p>
-                    </div>
-                    <div>
-                        <p>Fiber</p>
-                        <p>${nutrition.fiber}</p>
-                    </div>
-                    <div>
-                        <p>Sodium</p>
-                        <p>${nutrition.sodium}</p>
-                    </div>
-                    <button>In Stock</button>
-                </div>
-            </div>
-   `;
-   detail.innerHTML += card2;
+    showAll(vegetables);
 }
+window.showVegetables = showVegetables;
 
 //show only fruits ----------------------------------------------
 
 function showFruits(){
-    container.innerHTML = "";
     let fruits = data.filter((obj)=>{
         return obj.type == "fruits";
     })
-    for(let i = 0; i < fruits.length; i++){
-    let card = `
-            <div onclick="showDetail('${fruits[i].id}')" class="card">
-                <div>
-                    <img src="${fruits[i].image}" alt="">
-                </div>
-                <div>
-                    <h3>${fruits[i].price}</h3>
-                    <h3>${fruits[i].name}</h3>
-                    <button>Buy</button>
-                </div>
-            </div>
-    `;
-    container.innerHTML += card;
-   }
-   detail.innerHTML = "";
-   let nutrition = fruits[0].nutritional_info_per_100g;
-   let card2 = `
-            <div id="card2">
-                <div>
-                    <img src="${fruits[0].image}" alt="">
-                </div>
-                <div>
-                    <h3>${fruits[0].name}</h3>
-                    <h3>${fruits[0].price}</h3>
-                    <button></button>
-                </div>
-                 <div class="nutrition">
-                    <h4>Nutritional info per 100g</h4>
-                    <div>
-                        <p>Energy</p>
-                        <p>${nutrition.energy}</p>
-                    </div>
-                    <div>
-                        <p>Protein</p>
-                        <p>${nutrition.protein}</p>
-                    </div>
-                    <div>
-                        <p>Carbohydrates</p>
-                        <p>${nutrition.carbohydrates}</p>
-                    </div>
-                    <div>
-                        <p>Sugar</p>
-                        <p>${nutrition.sugar}</p>
-                    </div>
-                    <div>
-                        <p>Fat</p>
-                        <p>${nutrition.fat}</p>
-                    </div>
-                    <div>
-                        <p>Saturated fat</p>
-                        <p>${nutrition.saturated_fat}</p>
-                    </div>
-                    <div>
-                        <p>Fiber</p>
-                        <p>${nutrition.fiber}</p>
-                    </div>
-                    <div>
-                        <p>Sodium</p>
-                        <p>${nutrition.sodium}</p>
-                    </div>
-                    <button>In Stock</button>
-                </div>
-            </div>
-   `;
-   detail.innerHTML += card2;
+    showAll(fruits);
 }
 
 //show only cookingEssential ------------------------------
-
+window.showFruits = showFruits
 function showCookingEssential(){
-    container.innerHTML = "";
     let cookingEssential = data.filter((obj)=>{
         return obj.type == "cooking_essential";
     })
-    for(let i = 0; i < cookingEssential.length; i++){
-    let card = `
-            <div onclick="showDetail('${cookingEssential[i].id}')" class="card">
-                <div>
-                    <img src="${cookingEssential[i].image}" alt="">
-                </div>
-                <div>
-                    <h3>${cookingEssential[i].name}</h3>
-                    <h3>${cookingEssential[i].price}</h3>
-                    <button>Buy</button>
-                </div>
-            </div>
-    `;
-    container.innerHTML += card;
-   }
-   detail.innerHTML = "";
-   let nutrition = cookingEssential[0].nutritional_info_per_100g;
-   let card2 = `
-            <div id="card2">
-                <div>
-                    <img src="${cookingEssential[0].image}" alt="">
-                </div>
-                <div>
-                    <h3>${cookingEssential[0].name}</h3>
-                    <h3>${cookingEssential[0].price}</h3>
-                    <button></button>
-                </div>
-                 <div class="nutrition">
-                    <h4>Nutritional info per 100g</h4>
-                    <div>
-                        <p>Energy</p>
-                        <p>${nutrition.energy}</p>
-                    </div>
-                    <div>
-                        <p>Protein</p>
-                        <p>${nutrition.protein}</p>
-                    </div>
-                    <div>
-                        <p>Carbohydrates</p>
-                        <p>${nutrition.carbohydrates}</p>
-                    </div>
-                    <div>
-                        <p>Sugar</p>
-                        <p>${nutrition.sugar}</p>
-                    </div>
-                    <div>
-                        <p>Fat</p>
-                        <p>${nutrition.fat}</p>
-                    </div>
-                    <div>
-                        <p>Saturated fat</p>
-                        <p>${nutrition.saturated_fat}</p>
-                    </div>
-                    <div>
-                        <p>Fiber</p>
-                        <p>${nutrition.fiber}</p>
-                    </div>
-                    <div>
-                        <p>Sodium</p>
-                        <p>${nutrition.sodium}</p>
-                    </div>
-                    <button>In Stock</button>
-                </div>
-            </div>
-   `;
-   detail.innerHTML += card2;
+    showAll(cookingEssential);
 }
+window.showCookingEssential = showCookingEssential;
 
-//show all products
-function showAll(){
-    container.innerHTML = "";
-    for(let i = 0; i < data.length; i++){
-    let card = `
-            <div onclick="showDetail('${data[i].id}')" class="card">
-                <div>
-                    <img src="${data[i].image}" alt="">
-                </div>
-                <div>
-                    <h3>${data[i].name}</h3>
-                    <h3>${data[i].price}</h3>
-                    <button>Buy</button>
-                </div>
-            </div>
-    `;
-    container.innerHTML += card;
-   }
-   detail.innerHTML = "";
-   let nutrition = data[0].nutritional_info_per_100g;
-   let card2 = `
-            <div id="card2">
-                <div>
-                    <img src="${data[0].image}" alt="">
-                </div>
-                <div>
-                    <h3>${data[0].name}</h3>
-                    <h3>${data[0].price}</h3>
-                    <button></button>
-                </div>
-                 <div class="nutrition">
-                    <h4>Nutritional info per 100g</h4>
-                    <div>
-                        <p>Energy</p>
-                        <p>${nutrition.energy}</p>
-                    </div>
-                    <div>
-                        <p>Protein</p>
-                        <p>${nutrition.protein}</p>
-                    </div>
-                    <div>
-                        <p>Carbohydrates</p>
-                        <p>${nutrition.carbohydrates}</p>
-                    </div>
-                    <div>
-                        <p>Sugar</p>
-                        <p>${nutrition.sugar}</p>
-                    </div>
-                    <div>
-                        <p>Fat</p>
-                        <p>${nutrition.fat}</p>
-                    </div>
-                    <div>
-                        <p>Saturated fat</p>
-                        <p>${nutrition.saturated_fat}</p>
-                    </div>
-                    <div>
-                        <p>Fiber</p>
-                        <p>${nutrition.fiber}</p>
-                    </div>
-                    <div>
-                        <p>Sodium</p>
-                        <p>${nutrition.sodium}</p>
-                    </div>
-                    <button>In Stock</button>
-                </div>
-            </div>
-   `;
-   detail.innerHTML += card2;
+// ----------------------------cart functionality-----------------
+let cart = JSON.parse(localStorage.getItem("cart")) || [];
+function addToCart(id){
+    let addItem = data.find(i => i.id == id);
+    let flag = false;
+    let val = 0;
+    for(let i = 0; i < cart.length; i++){
+        if(cart[i].id == addItem.id){
+            cart[i].quantity +=1;
+            localStorage.setItem("cart", JSON.stringify(cart));
+            return;
+        }
+    }
+    addItem.quantity = 1;
+    cart.push(addItem);
+    localStorage.setItem("cart",JSON.stringify(cart));
 }
+window.addToCart = addToCart;
