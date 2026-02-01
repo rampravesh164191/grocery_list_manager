@@ -15,6 +15,9 @@
             box-sizing: border-box;
         }
         nav{
+            position: sticky;
+            top: 0;
+            background-color: white;
             border-bottom: 1px solid black;
             max-width: 1600px;
             height: 60px;
@@ -200,6 +203,192 @@
             padding: 5px 10px;
             font-size: 15px;
         }
+
+        /* //style  */
+        *{margin:0;padding:0;box-sizing:border-box;font-family:Arial, Helvetica, sans-serif;}
+    body{max-width:1600px;margin:auto;background:#fff;color:#111;}
+
+    /* PAGE LAYOUT */
+    .container{max-width:1100px;margin:0 auto;padding:22px 16px 48px;}
+
+    /* HERO */
+    .hero{
+      display:grid;
+      grid-template-columns:1.15fr 0.85fr;
+      gap:18px;
+      margin-top:14px;
+      align-items:stretch;
+    }
+
+    .heroCard{
+      border:1px solid #e7e7e7;
+      border-radius:18px;
+      padding:22px;
+      background:#fff;
+    }
+
+    .kicker{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:8px 12px;
+      border-radius:999px;
+      background:#f5f7ff;
+      border:1px solid #e1e6ff;
+      color:#2034a1;
+      font-size:13px;
+      margin-bottom:14px;
+      font-weight:700;
+    }
+
+    .hero h1{
+      font-size:44px;
+      line-height:1.1;
+      margin-bottom:10px;
+      letter-spacing:-0.4px;
+    }
+
+    .hero p{
+      font-size:16px;
+      line-height:1.6;
+      color:#333;
+      max-width:62ch;
+      margin-bottom:16px;
+    }
+
+    .pillRow{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      margin-bottom:18px;
+    }
+
+    .pill{
+      font-size:13px;
+      padding:8px 12px;
+      border-radius:999px;
+      border:1px solid #e7e7e7;
+      background:#fff;
+      color:#111;
+    }
+
+    .ctaRow{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+    }
+
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      padding:12px 14px;
+      border-radius:14px;
+      border:1px solid #e7e7e7;
+      text-decoration:none;
+      font-weight:700;
+      transition:0.15s;
+    }
+
+    .btnPrimary{
+      background:#111;
+      color:#fff;
+      border-color:#111;
+    }
+    .btnPrimary:hover{opacity:0.9;transform:translateY(-1px);}
+
+    .btnSecondary{
+      background:#fff;
+      color:#111;
+    }
+    .btnSecondary:hover{background:#f6f6f6;transform:translateY(-1px);}
+
+    .heroMedia{
+      border:1px solid #e7e7e7;
+      border-radius:18px;
+      overflow:hidden;
+      background:#fafafa;
+      min-height:320px;
+      display:flex;
+    }
+    .heroMedia img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      object-position:center;
+    }
+
+    /* MAIN SECTIONS */
+    .section{margin-top:22px;}
+    .sectionHeader{
+      display:flex;
+      justify-content:space-between;
+      align-items:flex-end;
+      gap:12px;
+      margin-bottom:10px;
+    }
+    .sectionHeader h2{font-size:20px;}
+    .sectionHeader p{font-size:13px;color:#666;}
+
+    .grid3{
+      display:grid;
+      grid-template-columns:repeat(3, minmax(0, 1fr));
+      gap:12px;
+    }
+
+    .card{
+      border:1px solid #e7e7e7;
+      border-radius:16px;
+      padding:14px;
+      background:#fff;
+      transition:0.15s;
+    }
+    .card:hover{background:#f6f6f6;transform:translateY(-2px);}
+    .cardTop{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      margin-bottom:8px;
+      font-weight:700;
+    }
+    .card p{color:#333;font-size:14px;line-height:1.5;}
+
+    /* CTA STRIP */
+    .ctaStrip{
+      margin-top:22px;
+      border:1px solid #e7e7e7;
+      border-radius:18px;
+      padding:18px;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:12px;
+      background:#fff9f0;
+    }
+    .ctaStrip h3{font-size:18px;margin-bottom:4px;}
+    .ctaStrip p{font-size:14px;color:#444;}
+    .ctaStrip .right{display:flex;gap:10px;flex-wrap:wrap;}
+
+    /* FOOTER */
+    footer{
+      margin-top:22px;
+      padding-top:14px;
+      border-top:1px solid #e7e7e7;
+      color:#666;
+      font-size:13px;
+      display:flex;
+      justify-content:space-between;
+      gap:10px;
+      flex-wrap:wrap;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 980px){
+      .hero{grid-template-columns:1fr;}
+      .heroMedia{min-height:240px;}
+      .grid3{grid-template-columns:1fr;}
+      nav > div:nth-child(2){display:none;} /* keep clean on mobile */
+    }
     </style>
 </head>
 <body>
@@ -232,6 +421,116 @@
             </a>
         </div>
     </nav>
+    <!-- main section  -->
+
+    <main class="container">
+    <!-- HERO -->
+    <section class="hero">
+      <div class="heroCard">
+        <div class="kicker">
+          <span class="material-symbols-outlined">auto_awesome</span>
+          Smart Grocery Planning
+        </div>
+
+        <h1>Grocery List Manager</h1>
+
+        <p>
+          Stop forgetting ingredients. Plan meals, manage your grocery list and cart,
+          and reduce food waste with smarter planning—built for people like Liam.
+        </p>
+
+        <div class="pillRow">
+          <span class="pill">Smart lists</span>
+          <span class="pill">Meal suggestions</span>
+          <span class="pill">Pantry tracking</span>
+          <span class="pill">Budget awareness</span>
+        </div>
+
+        <div class="ctaRow">
+          <a class="btn btnPrimary" href="store.html">
+            <span class="material-symbols-outlined">storefront</span>
+            Start Shopping
+          </a>
+          <a class="btn btnSecondary" href="food.html">
+            <span class="material-symbols-outlined">ramen_dining</span>
+            Plan Meals
+          </a>
+          <a class="btn btnSecondary" href="cart.html">
+            <span class="material-symbols-outlined">shopping_cart</span>
+            View Cart
+          </a>
+        </div>
+      </div>
+
+      <div class="heroMedia">
+        <img src="./images/purchase.jpg" alt="Grocery shopping" />
+      </div>
+    </section>
+
+    <!-- MAIN SECTION -->
+    <section class="section">
+      <div class="sectionHeader">
+        <h2>Main features</h2>
+        <p>Simple today, scalable tomorrow.</p>
+      </div>
+
+      <div class="grid3">
+        <div class="card">
+          <div class="cardTop">
+            <span class="material-symbols-outlined">list_alt</span>
+            Smart List Creation
+          </div>
+          <p>
+            Create and organize grocery items quickly so shopping becomes faster and less stressful.
+          </p>
+        </div>
+
+        <div class="card">
+          <div class="cardTop">
+            <span class="material-symbols-outlined">restaurant</span>
+            Meal Planning & Suggestions
+          </div>
+          <p>
+            Plan dishes and estimate ingredients needed. Make the most out of what you already have.
+          </p>
+        </div>
+
+        <div class="card">
+          <div class="cardTop">
+            <span class="material-symbols-outlined">payments</span>
+            Price & Budget Tracking
+          </div>
+          <p>
+            Track your cart totals and adjust quantities to stay within your weekly budget.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- CALL TO ACTION -->
+    <section class="ctaStrip">
+      <div class="left">
+        <h3>Ready to build your list?</h3>
+        <p>Jump into the store, add items to cart, then plan meals with what you have.</p>
+      </div>
+      <div class="right">
+        <a class="btn btnPrimary" href="store.html">
+          <span class="material-symbols-outlined">storefront</span>
+          Open Store
+        </a>
+        <a class="btn btnSecondary" href="bag.html">
+          <span class="material-symbols-outlined">inventory_2</span>
+          Pantry / Bag
+        </a>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+      <span>Built with HTML, CSS & JavaScript</span>
+      <span>© Khana</span>
+    </footer>
+  </main>
 </body>
 </html>
 <script type="module" src="store.js"></script>
